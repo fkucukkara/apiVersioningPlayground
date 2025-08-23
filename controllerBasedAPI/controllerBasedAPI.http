@@ -1,0 +1,43 @@
+@controllerBasedAPI_HostAddress = http://localhost:5163
+
+### Test Controller-Based API Version 1
+
+# Get all products (v1)
+GET {{controllerBasedAPI_HostAddress}}/api/v1/product
+Accept: application/json
+
+###
+
+# Get product by ID (v1)
+GET {{controllerBasedAPI_HostAddress}}/api/v1/product/1
+Accept: application/json
+
+###
+
+### Test Controller-Based API Version 2
+
+# Get all products (v2)
+GET {{controllerBasedAPI_HostAddress}}/api/v2/product
+Accept: application/json
+
+###
+
+# Get product by ID (v2)
+GET {{controllerBasedAPI_HostAddress}}/api/v2/product/1
+Accept: application/json
+
+###
+
+# Create product (v2 only)
+POST {{controllerBasedAPI_HostAddress}}/api/v2/product
+Content-Type: application/json
+
+{
+  "name": "Gaming Mouse",
+  "price": 89.99,
+  "category": "Gaming"
+}
+
+###
+
+# Response

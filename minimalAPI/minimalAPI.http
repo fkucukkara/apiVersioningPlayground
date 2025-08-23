@@ -1,0 +1,105 @@
+@minimalAPI_HostAddress = http://localhost:5050
+
+###
+# Version 1 Endpoints
+###
+
+# Get all products (v1)
+GET {{minimalAPI_HostAddress}}/api/v1/products
+Accept: application/json
+
+###
+
+# Get product by ID (v1)
+GET {{minimalAPI_HostAddress}}/api/v1/products/1
+Accept: application/json
+
+###
+
+# Get product by ID with different ID (v1)
+GET {{minimalAPI_HostAddress}}/api/v1/products/5
+Accept: application/json
+
+###
+
+# Test invalid product ID (v1)
+GET {{minimalAPI_HostAddress}}/api/v1/products/0
+Accept: application/json
+
+###
+
+###
+# Version 2 Endpoints
+###
+
+# Get all products (v2) - Enhanced with metadata
+GET {{minimalAPI_HostAddress}}/api/v2/products
+Accept: application/json
+
+###
+
+# Get product by ID (v2) - Enhanced with additional fields
+GET {{minimalAPI_HostAddress}}/api/v2/products/1
+Accept: application/json
+
+###
+
+# Get product by ID with different ID (v2)
+GET {{minimalAPI_HostAddress}}/api/v2/products/3
+Accept: application/json
+
+###
+
+# Test invalid product ID (v2)
+GET {{minimalAPI_HostAddress}}/api/v2/products/-1
+Accept: application/json
+
+###
+
+# Create new product (v2 only)
+POST {{minimalAPI_HostAddress}}/api/v2/products
+Content-Type: application/json
+
+{
+  "name": "Gaming Monitor",
+  "price": 299.99,
+  "category": "Electronics"
+}
+
+###
+
+# Create product with validation error - missing name (v2)
+POST {{minimalAPI_HostAddress}}/api/v2/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": 199.99,
+  "category": "Electronics"
+}
+
+###
+
+# Create product with validation error - invalid price (v2)
+POST {{minimalAPI_HostAddress}}/api/v2/products
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "price": -10.00,
+  "category": "Test"
+}
+
+###
+
+# Create another valid product (v2)
+POST {{minimalAPI_HostAddress}}/api/v2/products
+Content-Type: application/json
+
+{
+  "name": "Wireless Headphones",
+  "price": 149.99,
+  "category": "Audio"
+}
+
+###
