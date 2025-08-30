@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 
 namespace controllerBasedAPI.Controllers;
 
@@ -7,11 +7,8 @@ namespace controllerBasedAPI.Controllers;
 [Route("api/v{version:apiVersion}/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly ILogger<ProductController> _logger;
-
-    public ProductController(ILogger<ProductController> logger)
+    public ProductController()
     {
-        _logger = logger;
     }
 
     // Version 1 endpoints
@@ -39,7 +36,7 @@ public class ProductController : ControllerBase
     [Tags("Products v1")]
     public IActionResult GetProductByIdV1(int id)
     {
-        if (id <= 0) 
+        if (id <= 0)
             return BadRequest("Invalid product ID");
 
         var product = new { Id = id, Name = $"Product {id}", Price = 99.99m * id };
@@ -97,7 +94,7 @@ public class ProductController : ControllerBase
     [Tags("Products v2")]
     public IActionResult GetProductByIdV2(int id)
     {
-        if (id <= 0) 
+        if (id <= 0)
             return BadRequest("Invalid product ID");
 
         var product = new
